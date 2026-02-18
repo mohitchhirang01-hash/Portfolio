@@ -1,0 +1,1103 @@
+/* 
+   Portfolio Styles
+   Theme: Minimal Dark
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #050505;
+    /* Deep black foundation */
+    --text-color: #ffffff;
+    --text-secondary: #9ca3af;
+    --accent-color: #294af2;
+    /* Lime Green */
+    --accent-hover: #1b75e3;
+    --surface-color: #111;
+    --border-color: #222;
+
+    --container-width: 1400px;
+    /* Wider container for the new look */
+    --section-padding: 8rem 2rem;
+
+    --font-primary: 'Bebas Neue', sans-serif;
+    /* Display/Headings */
+    --font-secondary: 'Poppins', sans-serif;
+    /* Body Text */
+}
+
+/* Base Styles */
+html,
+body {
+    font-family: var(--font-secondary);
+    /* Keep body text readable */
+    /* ... other resets ... */
+}
+
+/* Global Container */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    /* Ensure side padding */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-title,
+.section-title,
+.expertise-title,
+.nav-logo,
+.btn-pill,
+.expertise-label {
+    font-family: var(--font-primary);
+    letter-spacing: 1px;
+    /* Bebas often needs slight spacing */
+}
+
+/* Header - Redesigned */
+/* Header - Redesigned */
+.header {
+    position: fixed;
+    top: 1rem;
+    /* Start slightly detached for floating look */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    /* Initial width 90% as requested */
+    padding: 1.5rem 3rem;
+    z-index: 1000;
+    background: transparent;
+    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Smoother, longer ease */
+    border-radius: 50px;
+    /* Consistent pill shape */
+}
+
+.header.scrolled {
+    width: 60%;
+    top: 1rem;
+    padding: 1rem 3rem;
+    background: rgba(5, 5, 5, 0.4);
+    /* Much more translucent (glassy) */
+    backdrop-filter: blur(20px);
+    /* Stronger blur for frosted effect */
+    -webkit-backdrop-filter: blur(20px);
+    /* Safari support */
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Slightly brighter border to define edge */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    z-index: 1001;
+    color: #fff;
+    /* Explicit white color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Navigation Styles */
+.nav-list {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    list-style: none;
+    /* Ensure no bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    position: relative;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    /* Explicitly remove any potential underline */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-color);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-image: none;
+    /* Ensure no gradient underlines */
+}
+
+/* Green dot indicator for active link */
+.nav-link.active::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+}
+
+/* Right side icon (fake theme toggle for visual reference) */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+
+/* Hero - Redesigned */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 3rem;
+    /* Reduced from 6rem */
+    /* Space for fixed header */
+}
+
+.hero-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hero-greeting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.hand-wave {
+    font-size: 1.4rem;
+    animation: wave 2.5s infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
+.hero-split-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 5vw, 5.5rem);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -1px;
+    background: none;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.hero-title .highlight {
+    color: var(--accent-color);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.hero-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Right Side - Image */
+.hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4/5;
+    animation: floatImage 6s ease-in-out infinite;
+}
+
+/* Inner box for image clipping */
+.hero-img-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 200px 200px 0 200px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Floating Animation */
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Circular Badge */
+.hero-badge {
+    position: absolute;
+    bottom: 2rem;
+    right: -2rem;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #050505;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.badge-text {
+    animation: rotateText 10s linear infinite;
+    width: 100%;
+    height: 100%;
+}
+
+.badge-arrow {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+@keyframes rotateText {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero-split-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-left {
+        align-items: center;
+        order: 2;
+        /* Text below image on mobile? or Image below text? Usually Image Top or Middle. Let's keep Text Top for SEO/Impact or Image Top for Visual. 
+        User reference usually has image top on mobile. */
+        order: 2;
+    }
+
+    .hero-right {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .hero-image-wrapper {
+        max-width: 350px;
+    }
+
+    .hero-description {
+        margin: 0 auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+}
+
+
+.hero-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    width: 100%;
+}
+
+.hero-socials {
+    display: flex;
+    gap: 2rem;
+}
+
+.hero-social-link {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 1px;
+}
+
+.hero-social-link:hover {
+    color: var(--text-color);
+}
+
+.btn-pill {
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    /* Pillow shape from reference */
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-pill:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+}
+
+/* Mobile Tweaks for Hero */
+@media (max-width: 900px) {
+    .header {
+        padding: 1.5rem;
+    }
+
+    .hero-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .nav {
+        position: fixed;
+        transform: none;
+        left: auto;
+    }
+
+    /* Revert to sidebar for mobile */
+    .hero-footer {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .btn-pill {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* About & Generic Section Headers */
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-line {
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* About Section Redesign */
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 900px;
+    /* Constrain width for better readability */
+    margin: 0 auto;
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--accent-hover);
+    /* Greenish/Lime accent color from reference */
+}
+
+.star-icon {
+    width: 20px;
+    height: 20px;
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.about-text-reveal {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    /* Large responsive font */
+    line-height: 1.4;
+    font-weight: 500;
+    color: #333;
+    /* Darker color for unrevealed text */
+}
+
+.reveal-type span {
+    opacity: 0.2;
+    /* Initial unrevealed state */
+    transition: opacity 0.1s;
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.skill-category h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.skill-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.skill-list li::before {
+    content: '→';
+    margin-right: 10px;
+    color: var(--accent-color);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.skill-list li:hover {
+    color: var(--text-color);
+    padding-left: 10px;
+}
+
+.skill-list li:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-image {
+    height: 240px;
+    overflow: hidden;
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .placeholder-img {
+    transform: scale(1.1);
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tags span {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    color: var(--text-secondary);
+}
+
+.project-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.project-link:hover::after {
+    width: 100%;
+}
+
+/* Testimonials */
+.testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+}
+
+.testimonial-card {
+    padding: 2rem;
+    background: linear-gradient(145deg, #151515, #0f0f0f);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.testimonial-card p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.testimonial-card cite {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* Contact */
+.contact-container {
+    text-align: center;
+}
+
+.contact-title {
+    font-size: clamp(3rem, 10vw, 5rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.contact-text {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.email-link {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--text-color);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.social-links {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.social-links a:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1.5rem;
+    }
+}
+
+/* Areas of Expertise */
+.expertise {
+    background: #05060A;
+    /* Dark premium background */
+    padding: 8rem 0;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.expertise-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-hover);
+    /* Soft neon green */
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.expertise-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+/* Accordion */
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.accordion-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    border-color: rgba(107, 255, 149, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-4px);
+}
+
+.accordion-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.acc-icon {
+    color: var(--accent-hover);
+    opacity: 0.8;
+}
+
+.chevron {
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .chevron {
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+.accordion-body {
+    height: 0;
+    overflow: hidden;
+    padding: 0 24px;
+    opacity: 0;
+    /* Transformation handled by GSAP */
+}
+
+/* Right Side Image */
+.expertise-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+.expertise-image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.expertise-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.expertise-image-container:hover .expertise-img {
+    transform: scale(1.05);
+}
+
+/* Tech Stack Pills - Global Styles */
+.tech-stack-row {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Prevent wrapping for marquee */
+    gap: 1.5rem;
+    /* Increased gap for better spacing in loop */
+    margin-top: 3rem;
+    overflow: hidden;
+    /* Hide overflow */
+    width: 100%;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    /* Fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    padding: 1rem 0;
+}
+
+.tech-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 12px 24px;
+    /* Increased padding */
+    font-size: 1.1rem;
+    /* Increased font size */
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    /* Prevent text wrap */
+}
+
+.tech-pill img,
+.pill-icon {
+    width: 24px;
+    /* Increased icon size */
+    height: 24px;
+    min-width: 24px;
+    /* Prevent collapse */
+    flex-shrink: 0;
+    /* Prevent flex shrinking */
+    object-fit: contain;
+    display: block;
+}
+
+.tech-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Mobile Responsive for Expertise */
+@media (max-width: 900px) {
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .expertise-image-wrapper {
+        order: 2;
+        /* Image below accordion on mobile */
+        min-height: 300px;
+    }
+
+    .tech-stack-row {
+        gap: 0.8rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        /* Horizontal scroll if needed */
+        padding-bottom: 1rem;
+    }
+}
+
+
+/* Mobile styles continued */
+@media (max-width: 768px) {
+    .nav.open {
+        right: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .testimonials-slider {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Tweaks for Hero */
+@media (max-width: 900px) {
+    .header {
+        padding: 1.5rem;
+    }
+
+    .hero-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden off-screen */
+        left: auto;
+        transform: none;
+        width: 70%;
+        height: 100vh;
+        background: #050505;
+        border-left: 1px solid var(--border-color);
+        padding: 6rem 2rem;
+        transition: right 0.3s ease;
+    }
+
+    .nav.open {
+        right: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .hero-footer {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .btn-pill {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* Animations hooks */
+/* Initial states for GSAP .to() animations */
+.hero-greeting,
+.hero-title,
+.hero-description,
+.hero-footer {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-subtitle,
+.hero-cta,
+.hero-scroll-indicator {
+    /* Legacy classes, keeping just in case or can be removed */
+    display: none;
+}

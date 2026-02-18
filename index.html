@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Developer</title>
+    <meta name="description" content="Portfolio of a creative developer specializing in modern web experiences.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Critical CSS for initial load to prevent FOUC */
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Outfit', sans-serif;
+            opacity: 0;
+            /* Hidden initially, revealed by JS */
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="#hero" class="logo">MJ</a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+            <div class="header-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="theme-icon">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="section hero">
+            <div class="container hero-container">
+
+                <div class="hero-split-layout">
+                    <!-- Left Content -->
+                    <div class="hero-left">
+                        <div class="hero-greeting">
+                            <span class="hand-wave">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-hand text-highlight-primary"
+                                    aria-hidden="true" style="color: var(--accent-color);">
+                                    <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path>
+                                    <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"></path>
+                                    <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"></path>
+                                    <path
+                                        d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15">
+                                    </path>
+                                </svg>
+                            </span>
+                            <span>Hey! It's me MOHiT,</span>
+                        </div>
+
+                        <h1 class="hero-title">
+                            Crafting <span class="highlight">purpose driven experiences</span> that inspire & engage.
+                        </h1>
+
+                        <p class="hero-description">
+                            I work with brands globally to build pixel-perfect, engaging, and
+                            accessible digital experiences that drive results and achieve business goals.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#about" class="btn btn-pill">Know me better</a>
+                            <div class="hero-socials">
+                                <a href="#" class="hero-social-link">Linkedin ↗</a>
+                                <a href="#" class="hero-social-link">Github ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Image -->
+                    <div class="hero-right">
+                        <div class="hero-image-wrapper">
+                            <div class="hero-img-box">
+                                <img src="assets/pic.jpg" alt="Devraj" class="hero-img">
+                            </div>
+                            <!-- Circular Badge -->
+                            <div class="hero-badge">
+                                <svg viewBox="0 0 100 100" width="100" height="100" class="badge-text">
+                                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                                        fill="transparent" />
+                                    <text>
+                                        <textPath href="#circlePath" fill="currentColor">
+                                            • LETS TALK • LETS TALK • LETS TALK
+                                        </textPath>
+                                    </text>
+                                </svg>
+                                <div class="badge-arrow">↗</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container about-container">
+                <div class="about-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="star-icon">
+                        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="#a3e635"
+                            stroke="#a3e635" stroke-width="2" />
+                    </svg>
+                    <span class="about-label">ABOUT ME</span>
+                </div>
+                <div class="about-text-reveal">
+                    <p class="reveal-type">I'm MOHiT, with over 5+ years of experience in design &
+                        development with strong focus on producing high quality & impactful digital experiences. I have
+                        worked with some of the most innovative industry leaders to help build their top-notch products.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Areas of Expertise Section -->
+        <section id="expertise" class="section expertise">
+            <div class="container">
+                <div class="expertise-grid">
+                    <!-- Left Column -->
+                    <div class="expertise-content">
+                        <div class="expertise-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" class="icon-star">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <span>SPECIALITY</span>
+                        </div>
+                        <h2 class="expertise-title">Areas of Expertise</h2>
+
+                        <div class="accordion-container">
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion-item active">
+                                <div class="accordion-header">
+                                    <div class="accordion-title">
+                                        <span class="acc-icon">&lt;/&gt;</span>
+                                        Development
+                                    </div>
+                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" strokewidth="2">
+                                        <path d="M6 9l6 6 6-6" />
+                                    </svg>
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="accordion-content">
+                                        <p>Building scalable, pixel-perfect web applications using modern technologies
+                                            and
+                                            best practices for performance and accessibility.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Accordion Item 2 -->
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <div class="accordion-title">
+                                        <span class="acc-icon">✎</span>
+                                        UI/UX Design
+                                    </div>
+                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6" />
+                                    </svg>
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="accordion-content">
+                                        <p>Designing intuitive and engaging user interfaces that focus on user
+                                            experience
+                                            and brand identity.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Accordion Item 3 -->
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <div class="accordion-title">
+                                        <span class="acc-icon">★</span>
+                                        Branding
+                                    </div>
+                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6" />
+                                    </svg>
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="accordion-content">
+                                        <p>Crafting unique brand identities that resonate with your target audience and
+                                            define your market presence.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="expertise-image-wrapper">
+                        <div class="expertise-image-container">
+                            <!-- Reference image used in request -->
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e0b7a8?q=80&w=2940&auto=format&fit=crop"
+                                alt="Expertise" class="expertise-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Pills -->
+                <div class="tech-stack-row">
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">
+                        HTML</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt=""> CSS
+                    </div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            alt=""> JavaScript</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                            alt=""> TypeScript</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">
+                        React</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="">
+                        Next.js</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                            alt=""> Angular</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="">
+                        Redux</div>
+                    <div class="tech-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">
+                        Node.js</div>
+                    <div class="tech-pill"><span class="pill-icon">EX</span> Express</div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Work</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <!-- Placeholder for project image -->
+                            <div class="placeholder-img" style="background: linear-gradient(45deg, #1e1e24, #2a2a35);">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>E-Commerce Platform</h3>
+                            <p>A full-featured shopping experience with cart functionality and payment integration.</p>
+                            <div class="project-tags">
+                                <span>React</span>
+                                <span>Redux</span>
+                                <span>Stripe</span>
+                            </div>
+                            <a href="#" class="project-link">View Project</a>
+                        </div>
+                    </article>
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-img" style="background: linear-gradient(45deg, #2a2a35, #1e1e24);">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Financial Dashboard</h3>
+                            <p>Real-time data visualization dashboard for tracking investments and innovative analytics.
+                            </p>
+                            <div class="project-tags">
+                                <span>Vue.js</span>
+                                <span>D3.js</span>
+                                <span>Firebase</span>
+                            </div>
+                            <a href="#" class="project-link">View Project</a>
+                        </div>
+                    </article>
+                    <!-- Project 3 -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-img" style="background: linear-gradient(45deg, #1e1e24, #333);">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Creative Agency Site</h3>
+                            <p>Award-winning website design for a digital agency focused on brand identity.</p>
+                            <div class="project-tags">
+                                <span>GSAP</span>
+                                <span>WebGL</span>
+                                <span>Vanilla JS</span>
+                            </div>
+                            <a href="#" class="project-link">View Project</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Testimonials</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="testimonials-slider">
+                    <blockquote class="testimonial-card">
+                        <p>"An absolute pleasure to work with. The attention to detail and creative solutions provided
+                            were outstanding."</p>
+                        <cite>— Sarah Johnson, CEO of TechStart</cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p>"Delivered beyond our expectations. The animations are smooth and the site performs
+                            beautifully on all devices."</p>
+                        <cite>— Mike Chen, Product Lead</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container contact-container">
+                <div class="contact-content">
+                    <h2 class="contact-title">Let's work together.</h2>
+                    <p class="contact-text">Currently available for freelance projects and open to full-time
+                        opportunities.</p>
+                    <a href="mailto:hello@example.com" class="email-link">hello@example.com</a>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GH</a>
+                        <a href="#" aria-label="LinkedIn">LI</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Dribbble">DR</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
