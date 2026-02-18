@@ -22,7 +22,38 @@ gsap.ticker.lagSmoothing(0);
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     initAnimations();
+    // Dynamic rounded favicon from square asset
+    createRoundFavicon('assets/pic.png');
+    // Initialize Theme Toggle
+    initThemeToggle();
 });
+
+/**
+ * Programmatically rounds the website favicon
+ * @param {string} src - Path to the original square image
+ */
+function createRoundFavicon(src) {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const size = Math.min(img.width, img.height);
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, size, size);
+
+        const link = document.querySelector("link[rel~='icon']");
+        if (link) {
+            link.href = canvas.toDataURL("image/png");
+        }
+    };
+    img.src = src;
+}
 
 function initAnimations() {
     // --- Hero Animation ---
@@ -44,11 +75,45 @@ function initAnimations() {
 
 
     // --- Header Scroll Effect ---
-    // Change header background on scroll
-    ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        toggleClass: { className: 'scrolled', targets: '.header' }
+    // Smoothly shrink and style header on scroll
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 901px)", () => {
+        // Desktop: Shrink to 40%
+        gsap.to('.header', {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: '+=150',
+                scrub: 1,
+            },
+            width: '40%',
+            padding: '0.8rem 2.5rem',
+            background: 'var(--surface-color)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--border-color)',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)',
+            ease: 'none'
+        });
+    });
+
+    mm.add("(max-width: 900px)", () => {
+        // Mobile: Shrink to 85% instead of 40%
+        gsap.to('.header', {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: '+=100',
+                scrub: 1,
+            },
+            width: '85%',
+            padding: '0.8rem 1.5rem',
+            background: 'var(--surface-color)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid var(--border-color)',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)',
+            ease: 'none'
+        });
     });
 
 
@@ -69,10 +134,10 @@ function initAnimations() {
         const spans = revealText.querySelectorAll("span");
 
         gsap.fromTo(spans,
-            { opacity: 0.2, color: "#555" },
+            { opacity: 0.15, color: "var(--text-secondary)" },
             {
                 opacity: 1,
-                color: "#fff", // Highlight color
+                color: "var(--text-color)", // Highlight color
                 stagger: 0.1,
                 scrollTrigger: {
                     trigger: ".about-container",
@@ -140,7 +205,7 @@ function initAnimations() {
 
 
     // --- Expertise Section Animations & Logic ---
-    const expertiseSection = document.querySelector('.expertise');
+    const expertiseSection = document.querySelector('.nested-expertise');
     if (expertiseSection) {
 
         // --- 1. Setup Tech Stack "Curved Loop" (DOM Manipulation) ---
@@ -389,4 +454,111 @@ function initAnimations() {
             nav.classList.remove('active'); // Assumes mobile menu logic handles this class
         });
     });
+}
+
+/**
+ * Initializes the theme toggle functionality with a wave expansion effect.
+ */
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const overlay = document.querySelector('.theme-overlay');
+    const root = document.documentElement;
+
+    if (!themeToggle || !themeIcon || !overlay) return;
+
+    // 1. Initial Load: Apply saved theme immediately without animation
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    // 2. Click Listener: Trigger Wave Animation
+    themeToggle.addEventListener('click', (e) => {
+        const currentTheme = root.getAttribute('data-theme');
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        // --- Calculate Epicentre (Button Center) ---
+        const rect = themeToggle.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // --- Prepare Overlay for Wave ---
+        // We set it to the NEXT theme's background color
+        const nextBg = nextTheme === 'light' ? '#ffffff' : '#050505';
+
+        gsap.set(overlay, {
+            x: centerX,
+            y: centerY,
+            backgroundColor: nextBg,
+            transformOrigin: 'center center',
+            scale: 0,
+            opacity: 1
+        });
+
+        // Add class to body to enable smooth color transitions on all elements
+        document.body.classList.add('theme-transition');
+
+        // --- Execute Wave Expansion ---
+        // Calculate distance to furthest corner to ensure full coverage
+        const maxDist = Math.max(
+            Math.hypot(centerX, centerY),
+            Math.hypot(window.innerWidth - centerX, centerY),
+            Math.hypot(centerX, window.innerHeight - centerY),
+            Math.hypot(window.innerWidth - centerX, window.innerHeight - centerY)
+        );
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                // Clean up
+                gsap.set(overlay, { scale: 0, opacity: 0 });
+                // We leave the transition class for a bit so components can settle
+                setTimeout(() => {
+                    document.body.classList.remove('theme-transition');
+                }, 500);
+            }
+        });
+
+        tl.to(overlay, {
+            scale: maxDist * 1.5, // Scale significantly to avoid edges
+            duration: 1.2,
+            ease: "power2.inOut",
+        });
+
+        // Toggle the actual theme attribute halfway through the expansion
+        setTimeout(() => {
+            root.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
+            updateThemeIcon(nextTheme);
+        }, 600);
+    });
+
+    /**
+     * Updates the SVG path of the theme icon.
+     */
+    function updateThemeIcon(theme) {
+        if (theme === 'light') {
+            // Switch to Moon (meaning "click to go Dark")
+            themeIcon.innerHTML = `
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            `;
+            // Optional: Adjust button background for light mode
+            themeToggle.style.background = 'rgba(0,0,0,0.05)';
+            themeToggle.style.borderColor = 'rgba(0,0,0,0.1)';
+        } else {
+            // Switch to Sun (meaning "click to go Light")
+            themeIcon.innerHTML = `
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            `;
+            themeToggle.style.background = 'rgba(255,255,255,0.05)';
+            themeToggle.style.borderColor = 'rgba(255,255,255,0.1)';
+        }
+    }
 }

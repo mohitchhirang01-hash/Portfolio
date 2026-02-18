@@ -10,27 +10,49 @@
     --text-color: #ffffff;
     --text-secondary: #9ca3af;
     --accent-color: #294af2;
-    /* Lime Green */
     --accent-hover: #1b75e3;
     --surface-color: #111;
     --border-color: #222;
 
     --container-width: 1400px;
-    /* Wider container for the new look */
     --section-padding: 8rem 2rem;
 
     --font-primary: 'Bebas Neue', sans-serif;
-    /* Display/Headings */
     --font-secondary: 'Poppins', sans-serif;
-    /* Body Text */
+}
+
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #0a0a0a;
+    --text-secondary: #4b5563;
+    --accent-color: #294af2;
+    --accent-hover: #1b75e3;
+    --surface-color: #f3f4f6;
+    --border-color: #e5e7eb;
+}
+
+/* Base Transition for Theme */
+*,
+*::before,
+*::after {
+    transition: background-color 0s, color 0s, border-color 0s;
+}
+
+/* Enable transitions ONLY when switching theme */
+body.theme-transition,
+body.theme-transition *,
+body.theme-transition *::before,
+body.theme-transition *::after {
+    transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease !important;
 }
 
 /* Base Styles */
 html,
 body {
     font-family: var(--font-secondary);
-    /* Keep body text readable */
-    /* ... other resets ... */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0s, color 0s;
 }
 
 /* Global Container */
@@ -64,34 +86,15 @@ h6,
 .header {
     position: fixed;
     top: 1rem;
-    /* Start slightly detached for floating look */
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    /* Initial width 90% as requested */
     padding: 1.5rem 3rem;
     z-index: 1000;
     background: transparent;
-    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-    /* Smoother, longer ease */
     border-radius: 50px;
-    /* Consistent pill shape */
-}
-
-.header.scrolled {
-    width: 60%;
-    top: 1rem;
-    padding: 1rem 3rem;
-    background: rgba(5, 5, 5, 0.4);
-    /* Much more translucent (glassy) */
-    backdrop-filter: blur(20px);
-    /* Stronger blur for frosted effect */
-    -webkit-backdrop-filter: blur(20px);
-    /* Safari support */
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Slightly brighter border to define edge */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid transparent;
+    /* Placeholder for GSAP */
 }
 
 
@@ -106,8 +109,7 @@ h6,
     font-weight: 600;
     letter-spacing: -0.5px;
     z-index: 1001;
-    color: #fff;
-    /* Explicit white color */
+    color: var(--text-color);
     text-decoration: none;
     /* Remove underline */
 }
@@ -136,31 +138,24 @@ h6,
     font-weight: 400;
     transition: color 0.3s ease;
     text-decoration: none;
-    /* Explicitly remove any potential underline */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: var(--text-color);
-    text-decoration: none;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background-image: none;
-    /* Ensure no gradient underlines */
 }
 
 /* Green dot indicator for active link */
 .nav-link.active::before {
     content: '';
-    display: inline-block;
     width: 6px;
     height: 6px;
     background-color: var(--accent-color);
     border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-    transform: translateY(-1px);
+    flex-shrink: 0;
 }
 
 .mobile-menu-btn {
@@ -370,10 +365,12 @@ h6,
     justify-content: center;
     align-items: center;
     z-index: 10;
-    background: #050505;
+    background: var(--bg-color);
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .badge-text {
@@ -386,6 +383,16 @@ h6,
     position: absolute;
     font-size: 1.5rem;
     color: var(--accent-color);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-badge:hover .badge-arrow {
+    transform: rotate(45deg);
+}
+
+.hero-badge:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 40px rgba(41, 74, 242, 0.3);
 }
 
 @keyframes rotateText {
@@ -455,6 +462,7 @@ h6,
     align-items: center;
     gap: 4px;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .hero-social-link:hover {
@@ -468,13 +476,40 @@ h6,
     /* Pillow shape from reference */
     color: var(--text-color);
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.btn-pill::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    border-radius: 50% 50% 0 0;
+    /* Wave shape */
+    transform: scaleX(1.5);
 }
 
 .btn-pill:hover {
-    background: var(--text-color);
     color: var(--bg-color);
     border-color: var(--text-color);
+}
+
+.btn-pill:hover::before {
+    top: 0;
+    border-radius: 0;
+    transform: scaleX(1);
 }
 
 /* Mobile Tweaks for Hero */
@@ -536,7 +571,7 @@ h6,
     font-size: clamp(3rem, 8vw, 6rem);
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    -webkit-text-stroke: 1px var(--border-color);
     transition: all 0.5s ease;
     cursor: default;
 }
@@ -544,7 +579,7 @@ h6,
 .marquee-item:hover {
     color: var(--text-color);
     -webkit-text-stroke: 1px var(--text-color);
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow(0 0 15px var(--accent-color));
 }
 
 .marquee-item span {
@@ -630,12 +665,11 @@ h6,
     /* Large responsive font */
     line-height: 1.4;
     font-weight: 500;
-    color: #333;
-    /* Darker color for unrevealed text */
+    color: var(--text-color);
 }
 
 .reveal-type span {
-    opacity: 0.2;
+    opacity: 0.15;
     /* Initial unrevealed state */
     transition: opacity 0.1s;
 }
@@ -698,6 +732,9 @@ h6,
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -708,6 +745,18 @@ h6,
 .project-image {
     height: 240px;
     overflow: hidden;
+    position: relative;
+}
+
+.project-img-display {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img-display {
+    transform: scale(1.05);
 }
 
 .placeholder-img {
@@ -722,6 +771,9 @@ h6,
 
 .project-info {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-info h3 {
@@ -758,7 +810,7 @@ h6,
     background: var(--accent-color);
     border: 1px solid var(--accent-color);
     border-radius: 50px;
-    color: #fff;
+    color: var(--bg-color);
     text-transform: uppercase;
     font-size: 0.85rem;
     font-weight: 600;
@@ -767,7 +819,8 @@ h6,
     overflow: hidden;
     position: relative;
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    margin-top: 1rem;
+    margin-top: auto;
+    width: fit-content;
 }
 
 .project-link:hover {
@@ -827,16 +880,23 @@ h6,
 
 
 
-/* Testimonials */
+/* Nested Testimonials (inside Contact) */
+.nested-testimonials {
+    margin-bottom: 8rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .testimonials-slider {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 3rem;
+    text-align: left;
 }
 
 .testimonial-card {
     padding: 2rem;
-    background: linear-gradient(145deg, #151515, #0f0f0f);
+    background: var(--surface-color);
     border-radius: 8px;
     border-left: 4px solid var(--accent-color);
 }
@@ -866,6 +926,12 @@ h6,
     font-size: clamp(3rem, 10vw, 5rem);
     line-height: 1;
     margin-bottom: 2rem;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+.contact-title:hover {
+    color: var(--accent-color);
 }
 
 .contact-text {
@@ -874,41 +940,65 @@ h6,
     margin-bottom: 3rem;
 }
 
-.email-link {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    color: var(--text-color);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.email-link:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
-.social-links {
+.social-links-row {
     margin-top: 4rem;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
-.social-links a {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-    width: 50px;
-    height: 50px;
+.social-btn {
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.social-links a:hover {
-    background: #fff;
-    color: #000;
+.social-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-btn:hover {
+    color: var(--bg-color);
+    transform: translateY(-5px);
+}
+
+.x-btn:hover {
+    background: #000000;
+    border-color: #000000;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.linkedin-btn:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    box-shadow: 0 10px 20px rgba(0, 119, 181, 0.4);
+}
+
+.gmail-btn:hover {
+    background: #EA4335;
+    border-color: #EA4335;
+    box-shadow: 0 10px 20px rgba(234, 67, 53, 0.4);
+}
+
+.github-btn:hover {
+    background: #333;
+    border-color: #333;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.social-btn:hover svg {
+    transform: scale(1.1);
 }
 
 /* Footer */
@@ -927,11 +1017,11 @@ h6,
     }
 }
 
-/* Areas of Expertise */
-.expertise {
-    background: #05060A;
-    /* Dark premium background */
-    padding: 8rem 0;
+/* Nested Expertise (inside About) */
+.nested-expertise {
+    margin-top: 10rem;
+    padding-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .expertise-grid {
@@ -1011,7 +1101,7 @@ h6,
 
 .accordion-item.active .chevron {
     transform: rotate(180deg);
-    color: #fff;
+    color: var(--text-color);
 }
 
 .accordion-body {
@@ -1099,9 +1189,9 @@ h6,
 }
 
 .tech-pill:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border-color: var(--accent-color);
 }
 
 
@@ -1173,7 +1263,7 @@ h6,
         transform: none;
         width: 70%;
         height: 100vh;
-        background: #050505;
+        background: var(--bg-color);
         border-left: 1px solid var(--border-color);
         padding: 6rem 2rem;
         transition: right 0.3s ease;
@@ -1215,9 +1305,112 @@ h6,
     transform: translateY(30px);
 }
 
-.hero-subtitle,
-.hero-cta,
-.hero-scroll-indicator {
-    /* Legacy classes, keeping just in case or can be removed */
-    display: none;
+/* Theme Overlay for Wave Effect */
+.theme-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    pointer-events: none;
+    z-index: 99999;
+    transform: scale(0);
+    transform-origin: center;
+}
+
+/* Light Theme Overrides for specific elements */
+[data-theme="light"] .hero-badge {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .header {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .marquee-strip {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+[data-theme="light"] .accordion-item {
+    background: #ffffff;
+    border-color: #eee;
+}
+
+[data-theme="light"] .tech-pill {
+    background: #f3f4f6;
+    border-color: #e5e7eb;
+}
+
+[data-theme="light"] .social-btn {
+    background: #f3f4f6;
+}
+
+[data-theme="light"] .testimonial-card p {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .about-text-reveal {
+    color: #111;
+}
+
+[data-theme="light"] .reveal-type span {
+    opacity: 0.25;
+    /* Slightly higher opacity for unrevealed light text */
+}
+
+[data-theme="light"] .expertise-title {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .about-header {
+    color: var(--accent-color) !important;
+}
+
+[data-theme="light"] .star-icon {
+    filter: none;
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .star-icon path {
+    fill: var(--accent-color);
+}
+
+[data-theme="light"] .reveal-type span {
+    color: #000;
+    opacity: 0.1;
+    /* Very faint black for unrevealed */
+}
+
+/* Explicitly target the reveal span for light mode visibility */
+[data-theme="light"] .reveal-type span.revealed,
+[data-theme="light"] .reveal-type span {
+    /* The GSAP logic sets opacity, so we just need a dark color foundation */
+    color: #111;
+}
+
+[data-theme="light"] .nav-link {
+    color: #333;
+}
+
+[data-theme="light"] .section-header .section-line {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .project-card {
+    background: #f9fafb;
+    border-color: #f3f4f6;
+}
+
+[data-theme="light"] .testimonial-card {
+    background: #f9fafb;
+    color: #0c0c0c;
+}
+
+[data-theme="light"] .footer {
+    border-top: 1px solid #eee;
+    background: #fff;
+    color: #666;
 }
