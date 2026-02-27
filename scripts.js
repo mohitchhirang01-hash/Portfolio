@@ -18,15 +18,94 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
-// Prevent FOUC
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    initAnimations();
-    // Dynamic rounded favicon from square asset
-    createRoundFavicon('assets/pic.png');
-    // Initialize Theme Toggle
-    initThemeToggle();
-});
+// ─── LOADER ──────────────────────────────────────────────────────────────────
+(function initLoader() {
+    const overlay = document.getElementById('loader-overlay');
+    const numEl = document.getElementById('loader-num');
+    const waterPath = document.getElementById('water-path');
+    const barEl = document.getElementById('loader-bar');
+
+    // Use the site's primary accent color from CSS variable
+    const accentColor = getComputedStyle(document.documentElement)
+        .getPropertyValue('--accent-color').trim() || '#294af2';
+    waterPath.setAttribute('fill', accentColor);
+
+    // SVG viewBox dimensions
+    const W = 320, H = 128;
+    const WAVE_AMP = 12;  // max wave height in svg units (was 5)
+    const WAVE_FREQ = 3;   // wave cycles across width (was 2)
+
+    let startTime = null;
+    const DURATION = 2400;  // ms to reach 100%
+
+    /** Build the blue water fill path with a sinusoidal top edge */
+    function buildWaterPath(pct, phase) {
+        const fillY = H - (H * pct / 100);
+        const amp = WAVE_AMP * Math.sin(pct / 100 * Math.PI); // 0 at empty/full
+
+        const step = 2;
+        let d = `M -2 ${H}`;
+
+        for (let x = -2; x <= W + 2; x += step) {
+            const y = fillY
+                + Math.sin((x / W) * Math.PI * 2 * WAVE_FREQ + phase) * amp
+                + Math.sin((x / W) * Math.PI * 2 * (WAVE_FREQ + 1) + phase * 0.75) * amp * 0.6;
+            d += ` L ${x} ${y.toFixed(2)}`;
+        }
+
+        d += ` L ${W + 2} ${H} Z`;
+        return d;
+    }
+
+    function tick(ts) {
+        if (!startTime) startTime = ts;
+        const rawT = Math.min((ts - startTime) / DURATION, 1);
+        const eased = 1 - Math.pow(1 - rawT, 2.8);
+        const pct = eased * 100;
+        const phase = ts * 0.004; // wave phase advances over time
+
+        // Update counter
+        numEl.textContent = Math.floor(pct);
+
+        // Update SVG water path
+        waterPath.setAttribute('d', buildWaterPath(pct, phase));
+
+        // Update progress bar
+        barEl.style.width = pct.toFixed(1) + '%';
+
+        if (rawT < 1) {
+            requestAnimationFrame(tick);
+        } else {
+            numEl.textContent = '100';
+            // Flat surface at 100%
+            waterPath.setAttribute('d', `M -2 0 L ${W + 2} 0 L ${W + 2} ${H} L -2 ${H} Z`);
+            barEl.style.width = '100%';
+            setTimeout(dismissLoader, 1500);
+        }
+    }
+
+    function dismissLoader() {
+        overlay.classList.add('loader-hidden');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.querySelector('.site-content').classList.add('loaded');
+            document.body.style.backgroundColor = '';
+            initAnimations();
+            createRoundFavicon('assets/pic.png');
+            initThemeToggle();
+        }, 800);
+    }
+
+    // Wait for Bebas Neue to load so SVG clipPath text renders correctly
+    document.fonts.ready.then(() => {
+        requestAnimationFrame(tick);
+    });
+})();
+
+
+
+
+
 
 /**
  * Programmatically rounds the website favicon
@@ -66,8 +145,8 @@ function initAnimations() {
         opacity: 0
     });
 
-    heroTl.to('body', { opacity: 1, duration: 0.5 })
-        .to('.hero-image-wrapper', { y: 0, opacity: 1, duration: 1.2, ease: 'power2.out' }, '-=0.5') // Image enters early? Or late? Let's say alongside greeting/title
+    heroTl
+        .to('.hero-image-wrapper', { y: 0, opacity: 1, duration: 1.2, ease: 'power2.out' })
         .to('.hero-greeting', { y: 0, opacity: 1, duration: 0.8 }, '-=1.0')
         .to('.hero-title', { y: 0, opacity: 1, duration: 1 }, '-=0.6')
         .to('.hero-description', { y: 0, opacity: 1, duration: 0.8 }, '-=0.8')

@@ -56,16 +56,18 @@
     <style>
         /* Critical CSS for initial load to prevent FOUC */
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Poppins', sans-serif;
-            opacity: 0;
-            /* Hidden initially, revealed by JS */
-            visibility: hidden;
-            transition: opacity 0.5s ease;
+            background-color: #000;
+            /* Black during load so body bg matches loader */
         }
 
-        body.loaded {
+        /* Hide only site content initially — loader stays visible */
+        .site-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease;
+        }
+
+        .site-content.loaded {
             opacity: 1;
             visibility: visible;
         }
@@ -92,6 +94,36 @@
 </head>
 
 <body>
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loader-overlay">
+        <div class="loader-inner">
+            <div class="loader-mj-wrap">
+                <svg id="loader-svg" class="loader-mj-svg" viewBox="0 0 320 128" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="mj-clip">
+                            <text x="160" y="118" text-anchor="middle" font-family="'Bebas Neue', sans-serif"
+                                font-size="132" letter-spacing="6">MJ</text>
+                        </clipPath>
+                    </defs>
+                    <!-- White ghost outline -->
+                    <text class="mj-ghost" x="160" y="118" text-anchor="middle" font-family="'Bebas Neue', sans-serif"
+                        font-size="132" letter-spacing="6">MJ</text>
+                    <!-- Blue water fill clipped to MJ shape -->
+                    <g clip-path="url(#mj-clip)">
+                        <path id="water-path" fill="#294af2" d="" />
+                    </g>
+                </svg>
+            </div>
+            <div class="loader-counter"><span id="loader-num">0</span><span class="loader-pct">%</span></div>
+        </div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+    </div>
+    <!-- ===== END LOADING SCREEN ===== -->
+
+    <div class="site-content"></div>
 
     <header class="header">
         <div class="container header-container">
@@ -552,6 +584,8 @@
             <p>&copy; 2026 Mohit Jaat. Designed & Developed from scratch.</p>
         </div>
     </footer>
+
+    </div><!-- /.site-content -->
 
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
