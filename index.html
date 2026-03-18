@@ -56,8 +56,8 @@
     <style>
         /* Critical CSS for initial load to prevent FOUC */
         body {
-            background-color: #000;
-            /* Black during load so body bg matches loader */
+            background-color: var(--bg-color);
+            /* Matches loader initially, allows theme variables to dictate color later */
         }
 
         /* Hide only site content initially — loader stays visible */
