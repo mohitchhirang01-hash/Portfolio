@@ -139,18 +139,17 @@ function initAnimations() {
     // Timeline to coordinate hero elements
     const heroTl = gsap.timeline({ defaults: { duration: 1, ease: 'power3.out' } });
 
-    // Set initial states for hero elements (including new image)
-    gsap.set(['.hero-greeting', '.hero-title', '.hero-description', '.hero-footer', '.hero-image-wrapper'], {
-        y: 30,
-        opacity: 0
-    });
+    // Set initial states for hero elements
+    const heroElements = ['.hero-greeting', '.hero-title', '.hero-description', '.hero-actions', '.hero-image-wrapper'];
+    gsap.set(heroElements, { y: 30, opacity: 0 });
 
-    heroTl
-        .to('.hero-image-wrapper', { y: 0, opacity: 1, duration: 1.2, ease: 'power2.out' })
-        .to('.hero-greeting', { y: 0, opacity: 1, duration: 0.8 }, '-=1.0')
-        .to('.hero-title', { y: 0, opacity: 1, duration: 1 }, '-=0.6')
-        .to('.hero-description', { y: 0, opacity: 1, duration: 0.8 }, '-=0.8')
-        .to('.hero-footer', { y: 0, opacity: 1, duration: 0.8 }, '-=0.6');
+    // Animate all elements with the same staggered loading effect
+    heroTl.to(heroElements, { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        stagger: 0.15 
+    });
 
 
     // --- Header Scroll Effect ---
@@ -533,6 +532,20 @@ function initAnimations() {
             nav.classList.remove('active'); // Assumes mobile menu logic handles this class
         });
     });
+
+    // --- Make Entire Project Cards Clickable ---
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            // Check if the user clicked the actual link or something inside it. If so, let it do its default behavior.
+            if (e.target.closest('.project-link')) return;
+
+            const link = card.querySelector('.project-link');
+            if (link && link.getAttribute('href') !== '#') {
+                window.open(link.href, link.target || '_self');
+            }
+        });
+    });
 }
 
 /**
@@ -641,3 +654,32 @@ function initThemeToggle() {
         }
     }
 }
+
+/**
+ * SAAS Dashboard Looping Slideshow
+ */
+function initSaasSlider() {
+    const sliderImg = document.getElementById("saas-dashboard-slider");
+    if (!sliderImg) return;
+    
+    // We have 21 images: Screenshot (330).png to Screenshot (350).png
+    const images = [];
+    for (let i = 330; i <= 350; i++) {
+        images.push(`assets/SAAS_Dashboard/Screenshot (${i}).png`);
+    }
+    
+    // Preload them so it doesn't flicker on first loop
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
+    let currentIndex = 0;
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        sliderImg.src = images[currentIndex];
+    }, 700); // 700ms per frame
+}
+
+// Initialize on load
+initSaasSlider();

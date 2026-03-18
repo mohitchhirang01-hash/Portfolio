@@ -52,7 +52,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/pic.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <style>
         /* Critical CSS for initial load to prevent FOUC */
         body {
@@ -123,467 +123,541 @@
     </div>
     <!-- ===== END LOADING SCREEN ===== -->
 
-    <div class="site-content"></div>
+    <div class="site-content">
 
-    <header class="header">
-        <div class="container header-container">
-            <a href="#hero" class="logo">MJ</a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#hero" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
+        <header class="header">
+            <div class="container header-container">
+                <a href="#hero" class="logo">MJ</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#hero" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+                <button id="theme-toggle" class="mobile-menu-btn"
+                    style="display: flex; align-items: center; justify-content: center; height: 40px; width: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;"
+                    aria-label="Toggle theme">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="theme-icon">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
                 </button>
-            </nav>
-            <button id="theme-toggle" class="mobile-menu-btn"
-                style="display: flex; align-items: center; justify-content: center; height: 40px; width: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;"
-                aria-label="Toggle theme">
-                <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="theme-icon">
-                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                </svg>
-            </button>
-        </div>
-        </div>
-    </header>
+            </div>
+        </header>
 
-    <main>
-        <section id="hero" class="section hero">
-            <div class="container hero-container">
+        <main>
+            <section id="hero" class="section hero">
+                <div class="container hero-container">
 
-                <div class="hero-split-layout">
-                    <!-- Left Content -->
-                    <div class="hero-left">
-                        <div class="hero-greeting">
-                            <span class="hand-wave">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-hand text-highlight-primary"
-                                    aria-hidden="true" style="color: var(--accent-color);">
-                                    <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path>
-                                    <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"></path>
-                                    <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"></path>
-                                    <path
-                                        d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15">
-                                    </path>
-                                </svg>
-                            </span>
-                            <span>Hey! It's me MOHiT,</span>
+                    <div class="hero-split-layout">
+                        <!-- Left Content -->
+                        <div class="hero-left">
+                            <div class="hero-greeting">
+                                <span class="hand-wave">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-hand text-highlight-primary"
+                                        aria-hidden="true" style="color: var(--accent-color);">
+                                        <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path>
+                                        <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"></path>
+                                        <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"></path>
+                                        <path
+                                            d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <span>Hey! It's me MOHiT,</span>
+                            </div>
+
+                            <h1 class="sr-only">Mohit – Web Developer from IIT Kanpur</h1>
+                            <h2 class="hero-title">
+                                Crafting <span class="highlight">purpose driven experiences</span> that inspire &
+                                engage.
+                            </h2>
+
+                            <p class="hero-description">
+                                I work with brands globally to build pixel-perfect, engaging, and
+                                accessible digital experiences that drive results and achieve business goals.
+                            </p>
+
+                            <div class="hero-actions">
+                                <a href="#about" class="btn btn-pill">Know me better</a>
+                                <div class="hero-socials">
+                                    <a href="https://www.linkedin.com/in/mohit-chhirang-585446379/" target="_blank"
+                                        class="hero-social-link">Linkedin ↗</a>
+                                    <a href="https://github.com/mohitchhirang01-hash" target="_blank"
+                                        class="hero-social-link">Github ↗</a>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 class="sr-only">Mohit – Web Developer from IIT Kanpur</h1>
-                        <h2 class="hero-title">
-                            Crafting <span class="highlight">purpose driven experiences</span> that inspire & engage.
-                        </h2>
+                        <!-- Right Image -->
+                        <div class="hero-right">
+                            <div class="hero-image-wrapper">
+                                <div class="hero-img-box">
+                                    <img src="assets/pic.png" alt="Mohit IIT Kanpur Web Developer" class="hero-img">
+                                </div>
+                                <!-- Circular Badge -->
+                                <div class="hero-badge">
+                                    <svg viewBox="0 0 100 100" width="100" height="100" class="badge-text">
+                                        <path id="circlePath"
+                                            d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                                            fill="transparent" />
+                                        <text>
+                                            <textPath href="#circlePath" fill="currentColor">
+                                                • LETS TALK • LETS TALK • LETS TALK
+                                            </textPath>
+                                        </text>
+                                    </svg>
+                                    <div class="badge-arrow">↗</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <p class="hero-description">
-                            I work with brands globally to build pixel-perfect, engaging, and
-                            accessible digital experiences that drive results and achieve business goals.
+                </div>
+            </section>
+
+            <section class="sr-only" aria-label="About Mohit IIT Kanpur Web Developer">
+                <p>
+                    Mohit is a BTech student at IIT Kanpur specializing in full stack web development and competitive
+                    programming. He builds scalable applications using React and Node.js and actively practices Data
+                    Structures and Algorithms to strengthen problem-solving skills.
+                </p>
+            </section>
+
+            <section class="marquee-strip">
+                <div class="marquee-content">
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
+                    <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
+                </div>
+            </section>
+
+            <section id="about" class="section about">
+                <div class="container about-container">
+                    <div class="about-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="star-icon">
+                            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+                                fill="currentColor" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <span class="about-label">ABOUT ME</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="star-icon">
+                            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+                                fill="currentColor" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div class="about-text-reveal">
+                        <p class="reveal-type">I'm MOHiT, with over year+ of experience in design &
+                            development with strong focus on producing high quality & impactful digital experiences. I
+                            have
+                            worked with some of the most innovative industry leaders to help build their top-notch
+                            products.
                         </p>
-
-                        <div class="hero-actions">
-                            <a href="#about" class="btn btn-pill">Know me better</a>
-                            <div class="hero-socials">
-                                <a href="https://www.linkedin.com/in/mohit-chhirang-585446379/" target="_blank"
-                                    class="hero-social-link">Linkedin ↗</a>
-                                <a href="https://github.com/mohitchhirang01-hash" target="_blank"
-                                    class="hero-social-link">Github ↗</a>
-                            </div>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Right Image -->
-                    <div class="hero-right">
-                        <div class="hero-image-wrapper">
-                            <div class="hero-img-box">
-                                <img src="assets/pic.png" alt="Mohit IIT Kanpur Web Developer" class="hero-img">
-                            </div>
-                            <!-- Circular Badge -->
-                            <div class="hero-badge">
-                                <svg viewBox="0 0 100 100" width="100" height="100" class="badge-text">
-                                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                                        fill="transparent" />
-                                    <text>
-                                        <textPath href="#circlePath" fill="currentColor">
-                                            • LETS TALK • LETS TALK • LETS TALK
-                                        </textPath>
-                                    </text>
+                <!-- Nested Expertise -->
+                <div class="container nested-expertise">
+                    <div class="expertise-grid">
+                        <!-- Left Column -->
+                        <div class="expertise-content">
+                            <div class="expertise-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="icon-star">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                 </svg>
-                                <div class="badge-arrow">↗</div>
+                                <span>SPECIALITY</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <h2 class="expertise-title">Areas of Expertise</h2>
 
-            </div>
-        </section>
-
-        <section class="sr-only" aria-label="About Mohit IIT Kanpur Web Developer">
-            <p>
-                Mohit is a BTech student at IIT Kanpur specializing in full stack web development and competitive
-                programming. He builds scalable applications using React and Node.js and actively practices Data
-                Structures and Algorithms to strengthen problem-solving skills.
-            </p>
-        </section>
-
-        <section class="marquee-strip">
-            <div class="marquee-content">
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-            </div>
-            <div class="marquee-content" aria-hidden="true">
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Design</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Animation</span><span class="dot">•</span></div>
-                <div class="marquee-item"><span>Website</span><span class="dot">•</span></div>
-            </div>
-        </section>
-
-        <section id="about" class="section about">
-            <div class="container about-container">
-                <div class="about-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="star-icon">
-                        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor"
-                            stroke="currentColor" stroke-width="2" />
-                    </svg>
-                    <span class="about-label">ABOUT ME</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="star-icon">
-                        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor"
-                            stroke="currentColor" stroke-width="2" />
-                    </svg>
-                </div>
-                <div class="about-text-reveal">
-                    <p class="reveal-type">I'm MOHiT, with over year+ of experience in design &
-                        development with strong focus on producing high quality & impactful digital experiences. I have
-                        worked with some of the most innovative industry leaders to help build their top-notch products.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Nested Expertise -->
-            <div class="container nested-expertise">
-                <div class="expertise-grid">
-                    <!-- Left Column -->
-                    <div class="expertise-content">
-                        <div class="expertise-label">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" class="icon-star">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <span>SPECIALITY</span>
-                        </div>
-                        <h2 class="expertise-title">Areas of Expertise</h2>
-
-                        <div class="accordion-container">
-                            <!-- Accordion Item 1 -->
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <div class="accordion-title">
-                                        <span class="acc-icon">&lt;/&gt;</span>
-                                        Development
+                            <div class="accordion-container">
+                                <!-- Accordion Item 1 -->
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <div class="accordion-title">
+                                            <span class="acc-icon">&lt;/&gt;</span>
+                                            Development
+                                        </div>
+                                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" strokewidth="2">
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
                                     </div>
-                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" strokewidth="2">
-                                        <path d="M6 9l6 6 6-6" />
-                                    </svg>
+                                    <div class="accordion-body">
+                                        <div class="accordion-content">
+                                            <p>Building scalable, pixel-perfect web applications using modern
+                                                technologies
+                                                and
+                                                best practices for performance and accessibility.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="accordion-body">
-                                    <div class="accordion-content">
-                                        <p>Building scalable, pixel-perfect web applications using modern technologies
-                                            and
-                                            best practices for performance and accessibility.</p>
+
+                                <!-- Accordion Item 2 -->
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <div class="accordion-title">
+                                            <span class="acc-icon">✎</span>
+                                            UI/UX Design
+                                        </div>
+                                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="accordion-content">
+                                            <p>Designing intuitive and engaging user interfaces that focus on user
+                                                experience
+                                                and brand identity.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Accordion Item 3 -->
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <div class="accordion-title">
+                                            <span class="acc-icon">★</span>
+                                            Branding
+                                        </div>
+                                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <div class="accordion-content">
+                                            <p>Crafting unique brand identities that resonate with your target audience
+                                                and
+                                                define your market presence.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <div class="accordion-title">
-                                        <span class="acc-icon">✎</span>
-                                        UI/UX Design
-                                    </div>
-                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6" />
-                                    </svg>
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="accordion-content">
-                                        <p>Designing intuitive and engaging user interfaces that focus on user
-                                            experience
-                                            and brand identity.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 3 -->
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <div class="accordion-title">
-                                        <span class="acc-icon">★</span>
-                                        Branding
-                                    </div>
-                                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path d="M6 9l6 6 6-6" />
-                                    </svg>
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="accordion-content">
-                                        <p>Crafting unique brand identities that resonate with your target audience and
-                                            define your market presence.</p>
-                                    </div>
-                                </div>
+                        <!-- Right Column -->
+                        <div class="expertise-image-wrapper">
+                            <div class="expertise-image-container">
+                                <img src="assets/Expertise.png" alt="Mohit IIT Kanpur Web Developer Expertise"
+                                    class="expertise-img" loading="lazy">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column -->
-                    <div class="expertise-image-wrapper">
-                        <div class="expertise-image-container">
-                            <img src="assets/Expertise.png" alt="Mohit IIT Kanpur Web Developer Expertise"
-                                class="expertise-img" loading="lazy">
+                    <!-- Tech Stack Pills -->
+                    <div class="tech-stack-row">
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML5" loading="lazy">
+                            HTML</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                alt="CSS3" loading="lazy"> CSS
                         </div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                alt="JavaScript" loading="lazy"> JavaScript</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                alt="TypeScript" loading="lazy"> TypeScript</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                alt="React" loading="lazy">
+                            React</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                                alt="Next.js" loading="lazy">
+                            Next.js</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                                alt="Angular" loading="lazy"> Angular</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+                                alt="Redux" loading="lazy">
+                            Redux</div>
+                        <div class="tech-pill"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                alt="Node.js" loading="lazy">
+                            Node.js</div>
+                        <div class="tech-pill"><span class="pill-icon">EX</span> Express</div>
                     </div>
                 </div>
-
-                <!-- Tech Stack Pills -->
-                <div class="tech-stack-row">
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                            alt="HTML5" loading="lazy">
-                        HTML</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
-                            loading="lazy"> CSS
-                    </div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            alt="JavaScript" loading="lazy"> JavaScript</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                            alt="TypeScript" loading="lazy"> TypeScript</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React" loading="lazy">
-                        React</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-                            alt="Next.js" loading="lazy">
-                        Next.js</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-                            alt="Angular" loading="lazy"> Angular</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
-                            alt="Redux" loading="lazy">
-                        Redux</div>
-                    <div class="tech-pill"><img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                            alt="Node.js" loading="lazy">
-                        Node.js</div>
-                    <div class="tech-pill"><span class="pill-icon">EX</span> Express</div>
-                </div>
-            </div>
-        </section>
+            </section>
 
 
 
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Selected Work</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <article class="project-card">
-                        <div class="project-image">
-                            <img src="assets/orbit_wallet.png" alt="Orbit Wallet - Mohit IIT Kanpur Web Developer"
-                                class="project-img-display" loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h3>Orbit Wallet</h3>
-                            <p>A modern digital wallet interface designed for seamless asset management and sleek user
-                                experience.</p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>GSAP</span>
-                                <span>Tailwind</span>
-                            </div>
-                            <a href="https://github.com/mohitchhirang01-hash/Orbit_Wallet" target="_blank"
-                                class="project-link">
-                                <span>View</span>
-                                <span class="rotating-text-wrapper">
-                                    <span class="rotating-words">
-                                        <span>Project</span>
-                                        <span>Source</span>
-                                        <span>Repo</span>
-                                        <span>Live</span>
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                    </article>
-                    <!-- Project 2 -->
-                    <article class="project-card">
-                        <div class="project-image">
-                            <img src="assets/VitalTrack.png" alt="VitalTrack Dashboard - Mohit IIT Kanpur Web Developer"
-                                class="project-img-display" loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h3>VitalTrack</h3>
-                            <p>An intelligent health monitoring dashboard providing real-time vitals tracking and stable
-                                health analysis.</p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>Chart.js</span>
-                                <span>Tailwind</span>
-                            </div>
-                            <a href="https://github.com/mohitchhirang01-hash" target="_blank" class="project-link">
-                                <span>View</span>
-                                <span class="rotating-text-wrapper">
-                                    <span class="rotating-words">
-                                        <span>Project</span>
-                                        <span>Source</span>
-                                        <span>Repo</span>
-                                        <span>Live</span>
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                    </article>
-                    <!-- Project 3 -->
-                    <article class="project-card">
-                        <div class="project-image">
-                            <div class="placeholder-img" style="background: linear-gradient(45deg, #1e1e24, #333);">
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Coming Soon</h3>
-                            <p>An upcoming creative project focusing on brand identity and interactive design.</p>
-                            <div class="project-tags">
-                                <span>In Progress</span>
-                            </div>
-                            <a href="#" class="project-link">
-                                <span>View</span>
-                                <span class="rotating-text-wrapper">
-                                    <span class="rotating-words">
-                                        <span>Project</span>
-                                        <span>Source</span>
-                                        <span>Repo</span>
-                                        <span>Live</span>
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact">
-            <div class="container contact-container">
-                <!-- Nested Testimonials -->
-                <div class="nested-testimonials">
+            <section id="projects" class="section projects">
+                <div class="container">
                     <div class="section-header">
-                        <h2 class="section-title">Testimonials</h2>
+                        <h2 class="section-title">Selected Work</h2>
                         <div class="section-line"></div>
                     </div>
-                    <div class="testimonials-slider">
-                        <blockquote class="testimonial-card">
-                            <p>"An absolute pleasure to work with. The attention to detail and creative solutions
-                                provided
-                                were outstanding."</p>
-                            <cite></cite>
-                        </blockquote>
-                        <blockquote class="testimonial-card">
-                            <p>"Delivered beyond our expectations. The animations are smooth and the site performs
-                                beautifully on all devices."</p>
-                            <cite></cite>
-                        </blockquote>
-                    </div>
-                </div>
+                    <div class="projects-grid">
+                        <!-- Project 1 -->
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img src="assets/orbit_wallet.png" alt="Orbit Wallet - Mohit IIT Kanpur Web Developer"
+                                    class="project-img-display" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>Orbit Wallet</h3>
+                                <p>A modern digital wallet interface designed for seamless asset management and sleek
+                                    user
+                                    experience.</p>
+                                <div class="project-tags">
+                                    <span>React</span>
+                                    <span>GSAP</span>
+                                    <span>Tailwind</span>
+                                </div>
+                                <a href="https://www.orbitwallet.in/" target="_blank" class="project-link">
+                                    <span>View</span>
+                                    <span class="rotating-text-wrapper">
+                                        <span class="rotating-words">
+                                            <span>Project</span>
+                                            <span>Source</span>
+                                            <span>Repo</span>
+                                            <span>Live</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
 
-                <div class="contact-content">
-                    <h2 class="contact-title">Let's work together.</h2>
-                    <p class="contact-text">Currently available for freelance projects and open to full-time
-                        opportunities.</p>
-                    <div class="social-links-row">
-                        <a href="https://x.com/Mohit_Chhirang" target="_blank" class="social-btn x-btn"
-                            aria-label="X (Twitter)">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.134l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mohit-chhirang-585446379/" target="_blank"
-                            class="social-btn linkedin-btn" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                </path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/mohitchhirang01-hash" target="_blank" class="social-btn github-btn"
-                            aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="mailto:mohitchhirang01@gmail.com" class="social-btn gmail-btn" aria-label="Gmail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                </path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </a>
+
+                        <!-- Project 4 -->
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img id="saas-dashboard-slider" src="assets/SAAS_Dashboard/Screenshot (330).png"
+                                    alt="SAAS Dashboard (JEE Sprint)" class="project-img-display" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>SAAS Dashboard (JEE Sprint)</h3>
+                                <p>A full-stack B2B SaaS platform for JEE coaching institutes to manage students, track
+                                    performance and analyse results across a 4-tier role-based dashboard system.</p>
+                                <div class="project-tags">
+                                    <span>React.js</span>
+                                    <span>Next.js</span>
+                                    <span>Supabase</span>
+                                    <span>Tailwind CSS</span>
+                                </div>
+                                <a href="https://github.com/mohitchhirang01-hash/SAAS_1_Eye.Ai" target="_blank"
+                                    class="project-link">
+                                    <span>View</span>
+                                    <span class="rotating-text-wrapper">
+                                        <span class="rotating-words">
+                                            <span>Project</span>
+                                            <span>Source</span>
+                                            <span>Repo</span>
+                                            <span>Live</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+                        <!-- Project 5 -->
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img src="assets/image.png" alt="Personal Portfolio Site" class="project-img-display"
+                                    loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>Personal Portfolio Site</h3>
+                                <p>A Personal Portfolio prepared using GSAP animation platform offering a smooth user
+                                    experience.</p>
+                                <div class="project-tags">
+                                    <span>GSAP Animations</span>
+                                    <span>React bits</span>
+                                    <span>Frontend</span>
+                                </div>
+                                <a href="https://mohit-chhirang.vercel.app/" target="_blank" class="project-link">
+                                    <span>View</span>
+                                    <span class="rotating-text-wrapper">
+                                        <span class="rotating-words">
+                                            <span>Project</span>
+                                            <span>Source</span>
+                                            <span>Repo</span>
+                                            <span>Live</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+                        <!-- Project 6 -->
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img src="assets/self_observation.png" alt="Self-observation site"
+                                    class="project-img-display" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>Self-observation site</h3>
+                                <p>I prepared a personalized exam preparation dashboard for my friend Muskan to keep her
+                                    daily records, integrated with a supabase backend to store data on the web.</p>
+                                <div class="project-tags">
+                                    <span>Frontend</span>
+                                    <span>Supabase</span>
+                                    <span>UI/UX</span>
+                                </div>
+                                <a href="https://for-her-mu-six.vercel.app/" target="_blank" class="project-link">
+                                    <span>View</span>
+                                    <span class="rotating-text-wrapper">
+                                        <span class="rotating-words">
+                                            <span>Project</span>
+                                            <span>Source</span>
+                                            <span>Repo</span>
+                                            <span>Live</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Project 2 -->
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img src="assets/VitalTrack.png"
+                                    alt="VitalTrack Dashboard - Mohit IIT Kanpur Web Developer"
+                                    class="project-img-display" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>VitalTrack</h3>
+                                <p>An intelligent health monitoring dashboard providing real-time vitals tracking and
+                                    stable
+                                    health analysis.</p>
+                                <div class="project-tags">
+                                    <span>React</span>
+                                    <span>Chart.js</span>
+                                    <span>Tailwind</span>
+                                </div>
+                                <a href="https://github.com/mohitchhirang01-hash" target="_blank" class="project-link">
+                                    <span>View</span>
+                                    <span class="rotating-text-wrapper">
+                                        <span class="rotating-words">
+                                            <span>Project</span>
+                                            <span>Source</span>
+                                            <span>Repo</span>
+                                            <span>Live</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+
+
                     </div>
                 </div>
+            </section>
+
+            <section id="contact" class="section contact">
+                <div class="container contact-container">
+                    <!-- Nested Testimonials -->
+                    <div class="nested-testimonials" style="display: none;">
+                        <div class="section-header">
+                            <h2 class="section-title">Testimonials</h2>
+                            <div class="section-line"></div>
+                        </div>
+                        <div class="testimonials-slider">
+                            <blockquote class="testimonial-card">
+                                <p>"An absolute pleasure to work with. The attention to detail and creative solutions
+                                    provided
+                                    were outstanding."</p>
+                                <cite></cite>
+                            </blockquote>
+                            <blockquote class="testimonial-card">
+                                <p>"Delivered beyond our expectations. The animations are smooth and the site performs
+                                    beautifully on all devices."</p>
+                                <cite></cite>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="contact-content">
+                        <h2 class="contact-title">Let's work together.</h2>
+                        <p class="contact-text">Currently available for freelance projects and open to full-time
+                            opportunities.</p>
+                        <div class="social-links-row">
+                            <a href="https://x.com/Mohit_Chhirang" target="_blank" class="social-btn x-btn"
+                                aria-label="X (Twitter)">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.134l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mohit-chhirang-585446379/" target="_blank"
+                                class="social-btn linkedin-btn" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                    </path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/mohitchhirang01-hash" target="_blank"
+                                class="social-btn github-btn" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a href="mailto:mohitchhirang01@gmail.com" class="social-btn gmail-btn" aria-label="Gmail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Mohit Jaat. Designed & Developed from scratch.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mohit Jaat. Designed & Developed from scratch.</p>
-        </div>
-    </footer>
+        </footer>
 
     </div><!-- /.site-content -->
 
