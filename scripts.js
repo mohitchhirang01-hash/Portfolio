@@ -91,6 +91,7 @@ gsap.ticker.lagSmoothing(0);
             document.querySelector('.site-content').classList.add('loaded');
             document.body.style.backgroundColor = '';
             initAnimations();
+            initMobileMenu();
             createRoundFavicon('assets/pic.png');
             initThemeToggle();
         }, 800);
@@ -528,8 +529,13 @@ function initAnimations() {
             });
 
             // Close mobile menu if open
-            const nav = document.querySelector('.nav-list');
-            nav.classList.remove('active'); // Assumes mobile menu logic handles this class
+            const nav = document.querySelector('.nav');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            if (nav && mobileBtn) {
+                nav.classList.remove('open');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     });
 
@@ -545,6 +551,24 @@ function initAnimations() {
                 window.open(link.href, link.target || '_self');
             }
         });
+    });
+}
+
+function initMobileMenu() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.nav');
+
+    if (!mobileBtn || !nav) return;
+
+    mobileBtn.addEventListener('click', () => {
+        mobileBtn.classList.toggle('active');
+        nav.classList.toggle('open');
+        // Toggle body scroll
+        if (nav.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 }
 
