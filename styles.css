@@ -1580,3 +1580,68 @@ h6,
     background: linear-gradient(90deg, #1b3fe0, #294af2, #5b78ff);
     box-shadow: 0 0 12px rgba(41, 74, 242, 0.8);
 }
+
+/* Skills Breakdown */
+.skills-breakdown {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 0 1.5rem;
+}
+
+.skills-breakdown-row {
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+    transition: border-color 0.3s ease;
+}
+
+.skills-breakdown-row:hover {
+    border-color: var(--accent-color);
+}
+
+.skills-breakdown-row:last-child {
+    border-bottom: none;
+}
+
+.skills-breakdown-label {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    width: 220px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.skills-breakdown-value {
+    font-family: var(--font-secondary);
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .skills-breakdown {
+        margin-top: 3rem;
+        gap: 1rem;
+    }
+    .skills-breakdown-row {
+        flex-direction: column;
+        gap: 0.3rem;
+        padding-bottom: 0.6rem;
+    }
+    .skills-breakdown-label {
+        width: auto;
+        font-size: 1.3rem;
+    }
+    .skills-breakdown-value {
+        font-size: 0.95rem;
+    }
+}

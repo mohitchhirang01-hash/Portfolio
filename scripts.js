@@ -359,7 +359,7 @@ function initAnimations() {
 
         // --- 2. Entrance Animations ---
         // Set initial state
-        gsap.set(['.expertise-label', '.expertise-title', '.accordion-item', '.expertise-image-container'], {
+        gsap.set(['.expertise-label', '.expertise-title', '.accordion-item', '.expertise-image-container', '.skills-breakdown-row'], {
             opacity: 0,
             y: 30
         });
@@ -404,7 +404,14 @@ function initAnimations() {
                 duration: 0.5,
                 stagger: 0.05,
                 ease: 'back.out(1.5)'
-            }, '-=0.4');
+            }, '-=0.4')
+            .to('.skills-breakdown-row', { // Animate new skills breakdown rows
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, '-=0.3');
 
         // Infinite float for image
         gsap.to('.expertise-image-container', {
